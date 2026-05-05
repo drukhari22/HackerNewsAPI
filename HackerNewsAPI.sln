@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37216.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI", "HackerNewsAPI\HackerNewsAPI.csproj", "{8F475BA0-5E99-D5F5-E348-A42518D1E793}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI.Application", "HackerNewsAPI.Application\HackerNewsAPI.Application.csproj", "{F6666117-FE86-1329-9E16-3BAB43908A61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI.Domain", "HackerNewsAPI.Domain\HackerNewsAPI.Domain.csproj", "{294D0B77-82A3-52DB-DF73-443A9944BA45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI.Infrastructure", "HackerNewsAPI.Infrastructure\HackerNewsAPI.Infrastructure.csproj", "{F28AD9C0-6C55-71B9-2218-744D958DACA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI.IntegrationTests", "HackerNewsAPI.IntegrationTests\HackerNewsAPI.IntegrationTests.csproj", "{91AC82FC-345E-F341-6C0D-8FEBE3A022F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackerNewsAPI.UnitTests", "HackerNewsAPI.UnitTests\HackerNewsAPI.UnitTests.csproj", "{6AFC208D-9FAB-70C0-AE91-C56F97E37C09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{380A7511-A354-6D7A-0CC0-8FA1F1BA7B6C}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		docker-compose.yml = docker-compose.yml
+		Dockerfile = Dockerfile
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F475BA0-5E99-D5F5-E348-A42518D1E793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F475BA0-5E99-D5F5-E348-A42518D1E793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F475BA0-5E99-D5F5-E348-A42518D1E793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F475BA0-5E99-D5F5-E348-A42518D1E793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6666117-FE86-1329-9E16-3BAB43908A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6666117-FE86-1329-9E16-3BAB43908A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6666117-FE86-1329-9E16-3BAB43908A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6666117-FE86-1329-9E16-3BAB43908A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{294D0B77-82A3-52DB-DF73-443A9944BA45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{294D0B77-82A3-52DB-DF73-443A9944BA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{294D0B77-82A3-52DB-DF73-443A9944BA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{294D0B77-82A3-52DB-DF73-443A9944BA45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F28AD9C0-6C55-71B9-2218-744D958DACA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F28AD9C0-6C55-71B9-2218-744D958DACA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F28AD9C0-6C55-71B9-2218-744D958DACA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F28AD9C0-6C55-71B9-2218-744D958DACA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91AC82FC-345E-F341-6C0D-8FEBE3A022F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91AC82FC-345E-F341-6C0D-8FEBE3A022F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91AC82FC-345E-F341-6C0D-8FEBE3A022F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91AC82FC-345E-F341-6C0D-8FEBE3A022F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AFC208D-9FAB-70C0-AE91-C56F97E37C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AFC208D-9FAB-70C0-AE91-C56F97E37C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AFC208D-9FAB-70C0-AE91-C56F97E37C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AFC208D-9FAB-70C0-AE91-C56F97E37C09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FAAAB35C-4F84-4C5F-A929-5F6E7A3B4D30}
+	EndGlobalSection
+EndGlobal

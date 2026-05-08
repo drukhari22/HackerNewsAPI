@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using HackerNewsAPI.Application;
+using HackerNewsAPI.Domain;
+using HackerNewsAPI.Infrastructure;
 using Microsoft.OpenApi.Models;
 
 public class Program
@@ -69,8 +71,10 @@ public class Program
 
         builder.Services.AddAuthorization();
 
-        // Register application and infrastructure services
+        // Register services by layer
+        builder.Services.AddDomain(builder.Configuration);
         builder.Services.AddApplicationServices(builder.Configuration);
+        builder.Services.AddInfrastructure(builder.Configuration);
 
         // Configure logging
         builder.Logging.ClearProviders();

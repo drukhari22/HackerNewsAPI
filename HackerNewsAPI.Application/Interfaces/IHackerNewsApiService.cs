@@ -1,9 +1,9 @@
-using HackerNewsAPI.Infrastructure.Entities;
+using HackerNewsAPI.Domain.Entities;
 
 namespace HackerNewsAPI.Application.Interfaces;
 
 public interface IHackerNewsApiService
 {
-    Task<Item?> GetItemAsync(int itemId, CancellationToken cancellationToken = default);
+    Task<Story?> GetStoryAsync(int storyId, CancellationToken cancellationToken = default);
     Task<IEnumerable<int>> GetTopStoryIdsAsync(CancellationToken cancellationToken = default);
 }

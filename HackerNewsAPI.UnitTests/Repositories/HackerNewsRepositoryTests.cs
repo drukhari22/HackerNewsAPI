@@ -1,6 +1,7 @@
 using HackerNewsAPI.Infrastructure.Repositories;
 using HackerNewsAPI.Infrastructure.Data;
 using HackerNewsAPI.Infrastructure.Entities;
+using HackerNewsAPI.Domain.Entities;
 using HackerNewsAPI.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -26,7 +27,7 @@ public class HackerNewsRepositoryTests
     }
 
     [Fact]
-    public async Task GetItemByIdAsync_ShouldReturnItemWhenExists()
+    public async Task GetStoryByIdAsync_ShouldReturnStoryWhenExists()
     {
         // Arrange
         var item = new Item
@@ -45,52 +46,51 @@ public class HackerNewsRepositoryTests
         await _context.SaveChangesAsync();
 
         // Act
-        var result = await _repository.GetItemByIdAsync(1);
+        var result = await _repository.GetStoryByIdAsync(1);
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(1, result.Id);
         Assert.Equal("Test Story", result.Title);
+        Assert.Equal("testuser", result.PostedBy);
+        Assert.Equal(100, result.Score);
+        Assert.Equal(25, result.CommentCount);
     }
 
     [Fact]
-    public async Task GetItemByIdAsync_ShouldReturnNullWhenNotExists()
+    public async Task GetStoryByIdAsync_ShouldReturnNullWhenNotExists()
     {
         // Act
-        var result = await _repository.GetItemByIdAsync(999);
+        var result = await _repository.GetStoryByIdAsync(999);
 
         // Assert
         Assert.Null(result);
     }
 
     [Fact]
-    public async Task AddOrUpdateItemAsync_ShouldAddNewItem()
+    public async Task AddOrUpdateStoryAsync_ShouldAddNewStory()
     {
         // Arrange
-        var item = new Item
+        var story = new Story
         {
-            Id = 1,
-            By = "testuser",
             Title = "Test Story",
+            Uri = "https://example.com/test",
+            PostedBy = "testuser",
             Score = 100,
-            Descendants = 25,
-            Time = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-            Url = "https://example.com/test",
-            Type = ItemType.Story,
-            CachedAt = DateTime.UtcNow
+            CommentCount = 25,
+            Time = DateTime.UtcNow
         };
 
         // Act
-        await _repository.AddOrUpdateItemAsync(item);
+        await _repository.AddOrUpdateStoryAsync(story);
 
         // Assert
-        var result = await _context.Items.FindAsync(1);
+        var result = await _context.Items.FirstOrDefaultAsync();
         Assert.NotNull(result);
         Assert.Equal("Test Story", result.Title);
     }
 
     [Fact]
-    public async Task AddOrUpdateItemAsync_ShouldUpdateExistingItem()
+    public async Task AddOrUpdateStoryAsync_ShouldUpdateExistingStory()
     {
         // Arrange
         var item = new Item
@@ -108,21 +108,19 @@ public class HackerNewsRepositoryTests
         _context.Items.Add(item);
         await _context.SaveChangesAsync();
 
-        var updatedItem = new Item
+        var updatedStory = new Story
         {
             Id = 1,
-            By = "testuser",
             Title = "Updated Story",
+            Uri = "https://example.com/updated",
+            PostedBy = "testuser",
             Score = 150,
-            Descendants = 30,
-            Time = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-            Url = "https://example.com/updated",
-            Type = ItemType.Story,
-            CachedAt = DateTime.UtcNow
+            CommentCount = 30,
+            Time = DateTime.UtcNow
         };
 
         // Act
-        await _repository.AddOrUpdateItemAsync(updatedItem);
+        await _repository.AddOrUpdateStoryAsync(updatedStory);
 
         // Assert
         var result = await _context.Items.FindAsync(1);
@@ -132,17 +130,17 @@ public class HackerNewsRepositoryTests
     }
 
     [Fact]
-    public async Task IsItemExpiredAsync_ShouldReturnTrueWhenItemNotExists()
+    public async Task IsStoryExpiredAsync_ShouldReturnTrueWhenStoryNotExists()
     {
         // Act
-        var result = await _repository.IsItemExpiredAsync(999);
+        var result = await _repository.IsStoryExpiredAsync(999);
 
         // Assert
         Assert.True(result);
     }
 
     [Fact]
-    public async Task IsItemExpiredAsync_ShouldReturnTrueWhenItemExpired()
+    public async Task IsStoryExpiredAsync_ShouldReturnTrueWhenStoryExpired()
     {
         // Arrange
         var item = new Item
@@ -161,14 +159,14 @@ public class HackerNewsRepositoryTests
         await _context.SaveChangesAsync();
 
         // Act
-        var result = await _repository.IsItemExpiredAsync(1);
+        var result = await _repository.IsStoryExpiredAsync(1);
 
         // Assert
         Assert.True(result);
     }
 
     [Fact]
-    public async Task IsItemExpiredAsync_ShouldReturnFalseWhenItemNotExpired()
+    public async Task IsStoryExpiredAsync_ShouldReturnFalseWhenStoryNotExpired()
     {
         // Arrange
         var item = new Item
@@ -187,7 +185,7 @@ public class HackerNewsRepositoryTests
         await _context.SaveChangesAsync();
 
         // Act
-        var result = await _repository.IsItemExpiredAsync(1);
+        var result = await _repository.IsStoryExpiredAsync(1);
 
         // Assert
         Assert.False(result);

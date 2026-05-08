@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HackerNewsAPI.Domain\HackerNewsAPI.Domain.csproj" />
-    <ProjectReference Include="..\HackerNewsAPI.Infrastructure\HackerNewsAPI.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -11,7 +10,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.7" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.7" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.*" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.1.0" />
   </ItemGroup>
 
